@@ -1,0 +1,14 @@
+---
+- hosts: webs
+  tasks:
+    - name: Register the contents of the /etc/passwd file
+      command: cat /etc/passwd
+      register: passwd_contents
+    - name: Check if the word 'nologin' exists in the /etc/passwd file
+      debug:
+        msg: "The word 'nologin' exists in the /etc/passwd file: {{ passwd_contents.stdout.find('nologin') != -1 }}"
+      when: passwd_contents.stdout.find('nologin') != -1
+    - name: Display a message when the word 'nologin' is not found
+      debug:
+        msg: "The word 'nologin' is not found in the /etc/passwd file."
+      when: passwd_contents.stdout.find('nologin') == -1

@@ -1,0 +1,10 @@
+---
+- name: Using Register variable
+  hosts: deb1
+  tasks:
+    - name: Store a variable
+      command: "date +%H"
+      register: current_hour
+    - name: Print a variable
+      debug:
+        var: current_hour.stdout

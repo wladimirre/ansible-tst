@@ -1,0 +1,11 @@
+--- 
+-  hosts: deb1
+   name: play2
+   become: yes
+   tasks: 
+      - name: "Find the disk space"
+        command: "df -h"
+        register: result
+      - name: "Install Apache in the remote machine" 
+        apt: name=apache2 state=latest
+      - debug: var=result.stdout_lines

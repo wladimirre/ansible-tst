@@ -1,0 +1,22 @@
+---
+- name: Create a users 
+  hosts: deb1
+  become: yes
+  tasks:
+  - name: Add user baeldung
+    user:
+      name: baeldung
+      shell: /bin/bash
+      home: /home/baeldung
+  - name: Add user remote
+    user:
+      name: remote
+      shell: /bin/bash
+      home: /home/remote
+  - name: Add user test-test
+    user:
+      name: test-test
+      shell: /bin/bash
+      home: /home/test-test
+
+
