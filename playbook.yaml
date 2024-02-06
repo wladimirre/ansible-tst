@@ -1,0 +1,12 @@
+- hosts: web
+tasks:
+- name: Install lighttpd
+apt:
+name: lighttpd
+state: present
+- hosts: database
+tasks:
+- name: Install mariadb
+apt:
+name: mariadb-server
+state: present

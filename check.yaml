@@ -1,0 +1,17 @@
+---
+ - name: checking service status
+   hosts: all
+   tasks:
+    - name: service sshd
+      command: systemctl status sshd
+      register: sshd
+    - debug: var=sshd.stdout_lines
+
+    - name: service httpd
+      command: systemctl status httpd
+      register: httpd
+    - debug: var=httpd.stdout_lines
+
+    - name: service smb
+      command: systemctl status smb
+      register: smb
